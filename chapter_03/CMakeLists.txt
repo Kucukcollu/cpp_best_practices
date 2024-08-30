@@ -26,14 +26,31 @@ target_link_libraries(${PROJECT_NAME}_main custom_math_lib)
 
 # tests
 
+enable_testing()
+
 ## catch2 test
 add_executable(catch2_test test/catch2_test/test_sum.cc)
 target_link_libraries(catch2_test PRIVATE Catch2::Catch2WithMain custom_math_lib)
+
+add_test(
+    NAME catch2_test
+    COMMAND $<TARGET_FILE:catch2_test>
+)
 
 ## doctest test
 add_executable(doctest_test test/doctest_test/test_sum.cc)
 target_link_libraries(doctest_test PRIVATE doctest::doctest custom_math_lib)
 
+add_test(
+    NAME doctest_test
+    COMMAND $<TARGET_FILE:doctest_test>
+)
+
 ## gtest_test
 add_executable(gtest_test test/gtest_test/test_sum.cc)
 target_link_libraries(gtest_test PRIVATE GTest::gtest_main custom_math_lib)
+
+add_test(
+    NAME gtest_test
+    COMMAND $<TARGET_FILE:gtest_test>
+)
