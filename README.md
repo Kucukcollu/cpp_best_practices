@@ -1,2 +1,2 @@
 # cpp_best_practices
-C++ code examples and features.
+Jason Turner's C++ Best Practices Book Hands on Examples.
