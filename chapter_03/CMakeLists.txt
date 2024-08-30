@@ -13,6 +13,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
 find_package(Catch2 REQUIRED)
+find_package(doctest REQUIRED)
+find_package(GTest REQUIRED)
 
 # custom_math_lib
 add_library(custom_math_lib STATIC src/custom_math_lib.cc)
@@ -27,3 +29,11 @@ target_link_libraries(${PROJECT_NAME}_main custom_math_lib)
 ## catch2 test
 add_executable(catch2_test test/catch2_test/test_sum.cc)
 target_link_libraries(catch2_test PRIVATE Catch2::Catch2WithMain custom_math_lib)
+
+## doctest test
+add_executable(doctest_test test/doctest_test/test_sum.cc)
+target_link_libraries(doctest_test PRIVATE doctest::doctest custom_math_lib)
+
+## gtest_test
+add_executable(gtest_test test/gtest_test/test_sum.cc)
+target_link_libraries(gtest_test PRIVATE GTest::gtest_main custom_math_lib)
