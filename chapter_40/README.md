@@ -1,0 +1,1 @@
+# 40. Avoid std::bind and std::function
